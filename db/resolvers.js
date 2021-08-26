@@ -1,5 +1,9 @@
 const User          = require ('../models/Usuario')
 const bcryptjs      = require('bcryptjs')
+require('dotenv').config({ path: '.env'})
+const createToken = ()=>{
+
+}
   
 // Resolvers
 const resolvers = {
@@ -39,6 +43,15 @@ const resolvers = {
             }
 
             // Veryfy password
+            const passwordverify = await bcryptjs.compare ( password, userverify.password )
+            if (!passwordverify){
+                throw new Error ('El password es incorrecto')
+            }
+
+            // Create token
+            return {
+                token: createToken(userverify, process.env.SECRETKEY, )
+            }
         }
     }
 

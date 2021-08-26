@@ -27,7 +27,7 @@ const typeDefs = gql`
     }
     type Mutation {
         newUser(input: UserInput): User
-        userAuth(input: AuthInput): Token
+        authUser(input: AuthInput): Token
     }
 `;
 
